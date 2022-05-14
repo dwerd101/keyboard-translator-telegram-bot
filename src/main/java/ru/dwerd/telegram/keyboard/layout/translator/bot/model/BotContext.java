@@ -12,7 +12,6 @@ import java.util.Map;
 @Data
 public class BotContext {
     private final Map<Long, BotState> botContextMap;
-
     public void put(Long telegramId, BotState services) {
         botContextMap.put(telegramId,services);
     }

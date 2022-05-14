@@ -1,6 +1,5 @@
 package ru.dwerd.telegram.keyboard.layout.translator.common;
 
-
 public enum EnglishRussianKeyboard {
     Q('й'),
     W('ц'),

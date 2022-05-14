@@ -15,7 +15,7 @@ public class BotChooseServiceImpl {
     public BotChooseServiceImpl(List<HandleMessageService> messageHandlersList,
                                 Map<BotState, HandleMessageService> messageHandlersMap) {
         this.messageHandlersMap = messageHandlersMap;
-        messageHandlersList.forEach(handler -> this.messageHandlersMap.put(handler.getNameServices(), handler));
+        messageHandlersList.forEach(handler -> this.messageHandlersMap.put(handler.getBotStateName(), handler));
     }
 
     public BotApiMethod<?> processInputMessage(BotState services, Message message) {

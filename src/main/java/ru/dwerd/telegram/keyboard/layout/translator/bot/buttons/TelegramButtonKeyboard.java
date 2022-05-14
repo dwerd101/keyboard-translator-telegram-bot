@@ -21,7 +21,7 @@ public class TelegramButtonKeyboard {
     }
 
     public SendMessage createMessageWithKeyboard(final long chatId,
-                                                 String textMessage, Buttons buttons) {
+                                                 final String textMessage, final Buttons buttons) {
         ReplyKeyboardMarkup replyKeyboardMarkup = null;
         if (buttons.equals(MENU_KEYBOARD)) {
             replyKeyboardMarkup = getChooseTranslateKeyboard();

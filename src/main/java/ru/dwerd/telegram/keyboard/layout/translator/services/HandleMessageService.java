@@ -6,5 +6,5 @@ import ru.dwerd.telegram.keyboard.layout.translator.bot.state.BotState;
 
 public interface HandleMessageService {
     BotApiMethod<?> handle(Message message);
-    BotState getNameServices();
+    BotState getBotStateName();
 }

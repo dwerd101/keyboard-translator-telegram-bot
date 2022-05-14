@@ -7,6 +7,7 @@ import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import ru.dwerd.telegram.keyboard.layout.translator.bot.buttons.TelegramButtonKeyboard;
 import ru.dwerd.telegram.keyboard.layout.translator.bot.model.BotContext;
+import ru.dwerd.telegram.keyboard.layout.translator.bot.model.constant.MessageConstants;
 import ru.dwerd.telegram.keyboard.layout.translator.bot.state.BotState;
 import ru.dwerd.telegram.keyboard.layout.translator.services.HandleMessageService;
 import ru.dwerd.telegram.keyboard.layout.translator.common.Translator;
@@ -19,12 +20,13 @@ public class EnglishToRussianServiceImpl implements HandleMessageService {
     private final BotContext botContext;
     private final Translator translator;
     private final TelegramButtonKeyboard telegramButtonKeyboard;
+    private final MessageConstants messageConstants;
 
     @Override
     public BotApiMethod<?> handle(Message message) {
         log.info("Check this message:{} is command", message.getText());
 
-        if("С английского на русский".equals(message.getText())) {
+        if(messageConstants.getEnglishToRussianMessage().equals(message.getText())) {
             log.info("Add user: {} in botContext with status: {}",message.getFrom().getId(), BotState.ENGLISH_TO_RUSSIAN);
             botContext.put(message.getFrom().getId(), BotState.ENGLISH_TO_RUSSIAN);
             log.info("Create message for telegram id: {} with keyboard :{}",message.getFrom().getId(),
@@ -46,7 +48,7 @@ public class EnglishToRussianServiceImpl implements HandleMessageService {
     }
 
     @Override
-    public BotState getNameServices() {
+    public BotState getBotStateName() {
         return BotState.ENGLISH_TO_RUSSIAN;
     }
 }
