@@ -12,7 +12,6 @@ import java.util.Map;
 public class BotChooseServiceImpl {
     private final Map<BotState, HandleMessageService> messageHandlersMap;
 
-
     public BotChooseServiceImpl(List<HandleMessageService> messageHandlersList,
                                 Map<BotState, HandleMessageService> messageHandlersMap) {
         this.messageHandlersMap = messageHandlersMap;
