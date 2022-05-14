@@ -41,7 +41,7 @@ public class TelegramFacade {
         final Long userId = message.getFrom().getId();
         BotState services;
 
-        if (message.equals("/start")) {
+        if (message.getText().equals("/start")) {
             botContext.getBotContextMap().put(userId, BotState.HELLO);
             services = BotState.HELLO;
         } else if (message.getText().equals(messageConstants.getEnglishToRussianMessage())) {
