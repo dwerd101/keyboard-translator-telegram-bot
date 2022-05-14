@@ -8,11 +8,10 @@ import ru.dwerd.telegram.keyboard.layout.translator.services.HandleMessageServic
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Configuration
 @ComponentScan("ru.dwerd.telegram.keyboard.layout.translator.services")
-public class ServicesConfig {
+public class BotChooseServiceConfig {
 
     @Bean
     public Map<BotState, HandleMessageService> messageHandlersMap() {
