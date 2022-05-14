@@ -13,9 +13,9 @@ import ru.dwerd.telegram.keyboard.layout.translator.bot.facade.TelegramFacade;
 @RequiredArgsConstructor
 public class TelegramBot extends TelegramWebhookBot {
 
-    private final String username;
-    private final String token;
-    private final String webHookPath;
+    private   String username;
+    private  String token;
+    private  String webHookPath;
     private final TelegramFacade telegramFacade;
 
     @Override

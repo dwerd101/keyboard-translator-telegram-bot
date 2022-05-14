@@ -1,6 +1,8 @@
 package ru.dwerd.telegram.keyboard.layout.translator.common;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,17 +12,22 @@ import java.util.stream.Collectors;
 import static ru.dwerd.telegram.keyboard.layout.translator.common.EnglishRussianKeyboard.*;
 
 @Component
+@Slf4j
 public class Translator {
 
     public String getRussianTranslation(String text) {
+
         var stringMassive = text.split("");
         AtomicInteger count = new AtomicInteger(0);
         List<Character> russianList = new ArrayList<>();
 
+        log.info("Create \"englishKeyboardList\"");
         var englishKeyboardList = Arrays.stream(stringMassive)
                 .map(x -> EnglishRussianKeyboard.getEnglishKeyboard(Character.toLowerCase(x.charAt(0))))
                 .toList();
 
+        log.info("Created \"englishKeyboardList\"");
+        log.info("Call method: \"changeTextWithUpperOrLowerCaseRussianTranslation\"");
         changeTextWithUpperOrLowerCaseRussianTranslation(russianList, englishKeyboardList, stringMassive, count);
 
         return listToString(russianList);
@@ -31,19 +38,21 @@ public class Translator {
         AtomicInteger count = new AtomicInteger(0);
         List<Character> englishList = new ArrayList<>();
 
+        log.info("Create \"englishKeyboardList\"");
         var russianKeyboardList = Arrays.stream(stringMassive)
                 .map(x -> EnglishRussianKeyboard.getRussianKeyboard(Character.toLowerCase(x.charAt(0))))
                 .toList();
 
+        log.info("Created \"englishKeyboardList\"");
+        log.info("Call method: \"changeTextWithUpperOrLowerCaseEnglishTranslation\"");
         changeTextWithUpperOrLowerCaseEnglishTranslation(englishList, russianKeyboardList, stringMassive, count);
-
         return listToString(englishList);
     }
-
 
     private void changeTextWithUpperOrLowerCaseRussianTranslation(List<Character> russianList,
                                                                   List<EnglishRussianKeyboard> englishKeyboardList,
                                                                   String[] stringMassive, AtomicInteger count) {
+
 
         englishKeyboardList.forEach(
                 x -> {
@@ -79,6 +88,7 @@ public class Translator {
         );
         count.set(0);
     }
+
     private <T> String listToString(List<T> list) {
         return list.stream()
                 .map(String::valueOf)
